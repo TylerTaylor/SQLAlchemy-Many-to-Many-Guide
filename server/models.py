@@ -70,10 +70,12 @@ class Appointment(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
 
-# 2. Give foreign keys to your join table, referring to the table(s) this object "belongs to"
+# 2a. Give foreign keys to your join table, referring to the table(s) this object "belongs to"
     doctor_id = db.Column(db.Integer, db.ForeignKey('doctors.id'))
     patient_id = db.Column(db.Integer, db.ForeignKey('patients.id'))
 
+# 2b. Use db.relationship to create a 'doctor' and 'patient' object that belong to this appointment.
+    # this is important for the `association_proxy` step later
     doctor = db.relationship('Doctor', back_populates='appointments')
     patient = db.relationship('Patient', back_populates='appointments')
 

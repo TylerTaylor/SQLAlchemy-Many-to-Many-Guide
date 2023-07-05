@@ -81,6 +81,8 @@ class Appointment(db.Model, SerializerMixin):
         return f"<Appointment - Doctor Name: {self.doctor.name}, Patient Name: {self.patient.name}>"
 
 # 5. Testing in flask shell
+    # first, seed some data (feel free to add more!)
+        # python seed.py
     # run `flask shell`
     # from app import app
     # from models import db, Doctor, Patient, Appointment
